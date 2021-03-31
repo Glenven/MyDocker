@@ -51,6 +51,6 @@ jobs:
         with:
           src: github/h455257166
           dst: gitee/h455257166
-          static_list: "AutoUpdateScripts"
+          static_list: "MyDocker"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
           dst_token: ${{ secrets.GITEE_TOKEN }}
