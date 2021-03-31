@@ -164,7 +164,7 @@
 ㅤ
 ## 四、更新教程
 #### 1. 更新 `一键更新` 脚本：
-    docker exec -it jd wget https://gitee.com/h455257166/MyDocker/raw/main/git_pull.sh -O git_pull.sh
+    docker exec -it jd wget https://gitee.com/SuperManito/JD-FreeFuck/raw/source/git_pull.sh -O git_pull.sh
 #### 2. 更新 `配置文件` ：
 - 备份当前配置文件
 
