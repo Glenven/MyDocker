@@ -1,0 +1,91 @@
+# File: .github/workflows/repo-sync.yml
+# 【使用限制】
+# 每个仓库只能同时支持20个 workflow 并行。
+# 每小时可以调用1000次 GitHub API 。
+# 每个 job 最多可以执行6个小时。
+# 免费版的用户最大支持20个 job 并发执行，macOS 最大只支持5个。
+# 私有仓库每月累计使用时间为2000分钟，超过后$ 0.008/分钟，公共仓库则无限制。
+
+#废弃。合并到同一文件内
+name: Github Actions 教程范文
+
+#触发任务的方式
+#多行、多个触发事件，在没有其它选项需要定义的情况下，最后加个冒号就行了。
+# on:
+#   workflow_dispatch:
+#   repository_dispatch:
+
+on:
+  #1、定时触发工作流程
+  #  关键词schedule:
+  #schedule:
+    #- cron: '0 */3 * * *'
+
+  #2、在 Actions -> workflow 页面显示Run workflow按钮
+  workflow_dispatch:
+
+  #3、通过点击仓库上的Star按钮触发工作流程
+  #  仓库被 star 时触发
+  #  注意：为了避免其他人点击Star触发流程
+  #  需要添加【if: github.event.repository.owner.id == github.event.sender.id】字段
+  # watch:
+  #   types: started
+
+  #4、push 指定分支触发
+  #  push推送到master分支触发
+  # push:
+  #   branches:
+  #     - master
+
+  repository_dispatch:
+    types: repo-sync
+
+
+# 当有多个任务时，可以指定任务的依赖关系，即运行顺序，否则是同时运行。
+# 
+# jobs:
+#   job1:
+#   job2:
+#     needs: job1
+#   job3:
+#     needs: [job1, job2]
+# 
+# 上面代码中，job1 必须先于 job2 完成，而 job3 等待 job1 和 job2 的完成才能运行。
+# 因此，这个 work­flow 的运行顺序依次为：job1、job2、job3。
+
+jobs:
+  job1: 
+    #  runs-on: 字段指定任务运行所需要的虚拟服务器环境，是必填字段
+    #  Windows Server 2019 | windows-latest
+    #  Ubuntu 18.04 | ubuntu-latest or ubuntu-18.04
+    #  Ubuntu 16.04 | ubuntu-16.04
+    #  macOS X Catalina 10.15 | macos-latest
+    runs-on: ubuntu-latest
+
+
+    #下面字段呼应触发任务中第三个方案[点击Star按钮触发工作流程]仓库被 star 时触发
+    #这样只有仓库所有者，也就是你自己点 Star 才能触发工作流程。
+    if: github.event.repository.owner.id == github.event.sender.id
+
+
+    # steps 字段指定每个任务的运行步骤，可以包含一个或多个步骤。步骤开头使用 - 符号。每个步骤可以指定以下字段:
+    # 
+    # name：步骤名称。
+    # uses：该步骤引用的action或 Docker 镜像。
+    # run：该步骤运行的 bash 命令。
+    # env：该步骤所需的环境变量。
+    # 
+    # 其中 uses 和 run 是必填字段，每个步骤只能有其一。同样名称也是可以忽略的。
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+
+      - name: 开始自动同步🔄
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/SuperManito/JD-FreeFuck.git"
+          source_branch: "source"
+          destination_branch: "DockerSource"
+          github_token: ${{ github.event.client_payload.PAT || secrets.PAT }}
