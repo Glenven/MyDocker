@@ -1,8 +1,8 @@
 FROM node:lts-alpine
 
-LABEL maintainer="SuperManito"
+LABEL maintainer="h455257166"
 
-ARG JD_BASE_URL=https://gitee.com/SuperManito/JD-FreeFuck.git
+ARG JD_BASE_URL=https://gitee.com/h455257166/MyDocker.git
 
 ARG JD_BASE_BRANCH=main
 

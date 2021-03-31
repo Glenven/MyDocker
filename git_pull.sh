@@ -51,13 +51,13 @@ function Update_Cron() {
 }
 
 ## 更新Shell源码
-function Git_PullShell() {
-  echo -e "\n更新 JD-FreeFuck 项目脚本：\n"
-  cd ${ShellDir}
-  git fetch --all
-  ExitStatusShell=$?
-  git reset --hard origin/source
-}
+# function Git_PullShell() {
+#   echo -e "\n更新 JD-FreeFuck 项目脚本：\n"
+#   cd ${ShellDir}
+#   git fetch --all
+#   ExitStatusShell=$?
+#   git reset --hard origin/source
+# }
 
 ## 克隆scripts
 function Git_CloneScripts() {
@@ -387,7 +387,7 @@ echo -e "+-----------------------------------------------------------+"
 [[ $(date "+%-H") -le 2 ]] && Update_Cron
 
 ## 更新Shell源码
-[ -d ${ShellDir}/.git ] && Git_PullShell
+# [ -d ${ShellDir}/.git ] && Git_PullShell
 
 ## 克隆或更新js脚本
 [ -f ${ScriptsDir}/package.json ] && PackageListOld=$(cat ${ScriptsDir}/package.json)
