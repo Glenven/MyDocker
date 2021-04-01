@@ -5,7 +5,7 @@ ShellDir=${JD_DIR:-$(
   cd $(dirname $0)
   pwd
 )}
-[ ${JD_DIR} ] && HelpJd=jd || HelpJd=jd.sh
+[ ${JD_DIR} ] && HelpJd=js || HelpJd=js.sh
 ScriptsDir=${ShellDir}/scripts
 ConfigDir=${ShellDir}/config
 FileConf=${ConfigDir}/config.sh
@@ -13,7 +13,7 @@ FileConfSample=${ShellDir}/sample/config.sh.sample
 LogDir=${ShellDir}/log
 ListScripts=($(
   cd ${ScriptsDir}
-  ls *.js | grep -E "j[drx]_"
+  ls *.js | grep -E "j[drxs]_"
 ))
 ListCron=${ConfigDir}/crontab.list
 
@@ -163,7 +163,7 @@ function Help() {
   echo -e "3. bash ${HelpJd} hangup   # 重启挂机程序"
   echo -e "4. bash ${HelpJd} resetpwd # 重置控制面板用户名和密码"
   echo -e "\n针对用法1、用法2中的\"xxx\"，可以不输入后缀\".js\"，另外，如果前缀是\"jd_\"的话前缀也可以省略。"
-  echo -e "当前有以下脚本可以运行（仅列出以jd_、jr_、jx_开头的脚本）："
+  echo -e "当前有以下脚本可以运行（仅列出以jd_、jr_、jx_、js_开头的脚本）："
   cd ${ScriptsDir}
   for ((i = 0; i < ${#ListScripts[*]}; i++)); do
     Name=$(grep "new Env" ${ListScripts[i]} | awk -F "'|\"" '{print $2}')
@@ -201,7 +201,7 @@ function Run_HangUp() {
 ## 重置密码
 function Reset_Pwd() {
   cp -f ${ShellDir}/sample/auth.json ${ConfigDir}/auth.json
-  echo -e "控制面板重置成功，用户名：useradmin，密码：supermanito\n"
+  echo -e "控制面板重置成功，用户名：admin，密码：adminadmin\n"
 }
 
 ## 运行京东脚本
