@@ -61,19 +61,19 @@ function Git_PullShell() {
 
 ## 克隆scripts
 function Git_CloneScripts() {
-  echo -e "\n克隆 lxk0301 活动脚本：\n"
-  git clone -b master ${ScriptsURL} ${ScriptsDir}
+  echo -e "\n克隆 ${ScriptsURL}中的JSScript 活动脚本：\n"
+  git clone -b JSScript ${ScriptsURL} ${ScriptsDir}
   ExitStatusScripts=$?
   echo
 }
 
 ## 更新scripts
 function Git_PullScripts() {
-  echo -e "\n更新 lxk0301 活动脚本：\n"
+  echo -e "\n更新 ${ScriptsURL}中的JSScript 活动脚本：\n"
   cd ${ScriptsDir}
   git fetch --all
   ExitStatusScripts=$?
-  git reset --hard origin/master
+  git reset --hard origin/JSScript
   echo
 }
 
@@ -338,11 +338,11 @@ function ExtraShell() {
 function Run_All() {
   ## 临时删除以旧版脚本
   rm -rf ${ShellDir}/run-all.sh
-  ## 默认将 "jd、jx、jr" 开头的活动脚本加入其中
+  ## 默认将 "jd、jx、jr、js" 开头的活动脚本加入其中
   rm -rf ${ShellDir}/run_all.sh
-  bash ${ShellDir}/jd.sh | grep -io 'j[drx]_[a-z].*' | grep -v 'bean_change' >${ShellDir}/run_all.sh
+  bash ${ShellDir}/js.sh | grep -io 'j[drx]_[a-z].*' | grep -v 'bean_change' >${ShellDir}/run_all.sh
   sed -i "1i\jd_bean_change.js" ${ShellDir}/run_all.sh ## 置顶京豆变动通知
-  sed -i "s#^#bash ${ShellDir}/jd.sh &#g" ${ShellDir}/run_all.sh
+  sed -i "s#^#bash ${ShellDir}/js.sh &#g" ${ShellDir}/run_all.sh
   sed -i 's#.js# now#g' ${ShellDir}/run_all.sh
   sed -i '1i\#!/bin/env bash' ${ShellDir}/run_all.sh
   ## 自定义添加脚本
@@ -356,15 +356,16 @@ function Run_All() {
   ##   sed -i '/xxx/d' ${ShellDir}/run_all.sh
   ##   echo "bash jd.sh xxx now" >>${ShellDir}/run_all.sh
   ## fi
-  cat ${ShellDir}/run_all.sh | grep jd_crazy_joy_coin -wq
-  if [ $? -eq 0 ]; then
-    sed -i '/jd_crazy_joy_coin/d' ${ShellDir}/run_all.sh
-    echo "bash ${ShellDir}/jd.sh jd_crazy_joy_coin now" >>${ShellDir}/run_all.sh
-  fi
+  ##挂机活动疯狂的JOY
+  # cat ${ShellDir}/run_all.sh | grep jd_crazy_joy_coin -wq
+  # if [ $? -eq 0 ]; then
+  #   sed -i '/jd_crazy_joy_coin/d' ${ShellDir}/run_all.sh
+  #   echo "bash ${ShellDir}/jd.sh jd_crazy_joy_coin now" >>${ShellDir}/run_all.sh
+  # fi
 
   ## 去除不想加入到此脚本中的活动
   ## 例：sed -i '/xxx/d' ${ShellDir}/run_all.sh
-  sed -i '/jd_delCoupon/d' ${ShellDir}/run_all.sh ## 不执行 "京东家庭号" 活动
+  # sed -i '/jd_delCoupon/d' ${ShellDir}/run_all.sh ## 不执行 "京东家庭号" 活动
   sed -i '/jd_family/d' ${ShellDir}/run_all.sh    ## 不执行 "删除优惠券" 活动
 
   ## 去除脚本中的空行
