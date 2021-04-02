@@ -2,6 +2,20 @@
 ## 修订日期：2021 年 3 月 24 日
 ㅤ
 ## 一、基础使用教程
+#### 创建容器：
+    docker run -dit \
+    -v /opt/js/scripts:/js/scripts `# 设置活动脚本的主机挂载目录为/opt/js/scripts` \
+    -v /opt/js/config:/js/config `# 设置配置文件的主机挂载目录为/opt/js/config` \
+    -v /opt/js/log:/js/log `# 设置日志的主机挂载目录为/opt/jd/log` \
+    -p 6789:6789 `# 设置端口映射，格式为 "主机端口:容器端口"，主机端口号可自定义` \
+    -e ENABLE_WEB_PANEL=true `# 启用控制面板功能` \
+    --name js `# 设置容器名为jd` \
+    --network bridge `# 设置网络为桥接，直连主机` \
+    --hostname js `# 设置主机名为jd` \
+    --restart always `# 设置容器开机自启` \
+    h455257166/mydocker_1.0
+
+
 >附：[Docker 容器使用教程](https://www.runoob.com/docker/docker-container-usage.html)
 #### 1. 容器的进入与退出：
 - 进入容器
