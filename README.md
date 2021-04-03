@@ -13,8 +13,8 @@
     --network bridge `# 设置网络为桥接，直连主机` \
     --hostname js `# 设置主机名为jd` \
     --restart always `# 设置容器开机自启` \
-    h455257166/mydocker_1.0
-
+    h455257166/mydocker_1.0:latest
+    docker run -dit -p 6789:6789 -v C:/Js/scripts:/js/scripts -v C:/Js/config:/js/config -v C:/Js/log:/js/log -e ENABLE_WEB_PANEL=true --name js --network bridge --hostname js --restart always h455257166/mydocker_1.0:latest
 
 >附：[Docker 容器使用教程](https://www.runoob.com/docker/docker-container-usage.html)
 #### 1. 容器的进入与退出：
