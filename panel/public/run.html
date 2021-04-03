@@ -115,7 +115,7 @@
                 editor.setValue('');
 
                 const jsName = this.id === 'jd_list' ? '' : this.id;
-                const cmd = jsName ? `bash jd.sh ${jsName} now` : 'bash jd.sh';
+                const cmd = jsName ? `bash js.sh ${jsName} now` : 'bash js.sh';
                 $.post('./runCmd', {
                     cmd: cmd
                 }, function (data) {
@@ -152,7 +152,7 @@
                             break;
                         case 'hangup':
                             confirmTxt = '确认启动/重启挂机程序？';
-                            cmd = `bash jd.sh ${this.id}`;
+                            cmd = `bash js.sh ${this.id}`;
                             break;
                         case 'rm_log':
                             confirmTxt = '确认删除日志？';
@@ -160,11 +160,11 @@
                             break;
                         case 'resetpwd':
                             confirmTxt = '确认重置用户名与密码？';
-                            cmd = `bash jd.sh ${this.id}`;
+                            cmd = `bash js.sh ${this.id}`;
                             break;
                         case 'jd_delCoupon':
                             confirmTxt = '确认删除优惠券（存在误删，谨慎操作）？';
-                            cmd = `bash jd.sh ${this.id}`;
+                            cmd = `bash js.sh ${this.id}`;
                             break;
                         case 'crazy_joy_coin':
                             confirmTxt = '确认停止后台挂机程序？';
@@ -220,7 +220,7 @@
                 editor.setValue('');
 
                 const jsName = this.id === 'jd_list' ? '' : this.id;
-                const cmd = `bash jd.sh ${jdScript} now`;
+                const cmd = `bash js.sh ${jdScript} now`;
                 $.post('./runCmd', {
                     cmd: cmd,
                     delay: 500
