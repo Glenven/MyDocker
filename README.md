@@ -1,37 +1,39 @@
 # 关于 Docker 版本的《使用与更新》教程
-## 修订日期：2021 年 3 月 24 日
+## 修订日期：2021 年 4 月 6 日
 ㅤ
 ## 一、基础使用教程
-#### 创建容器：
+#### liunx下创建容器：
     docker run -dit \
     -v /opt/js/scripts:/js/scripts `# 设置活动脚本的主机挂载目录为/opt/js/scripts` \
     -v /opt/js/config:/js/config `# 设置配置文件的主机挂载目录为/opt/js/config` \
-    -v /opt/js/log:/js/log `# 设置日志的主机挂载目录为/opt/jd/log` \
+    -v /opt/js/log:/js/log `# 设置日志的主机挂载目录为/opt/js/log` \
     -p 6789:6789 `# 设置端口映射，格式为 "主机端口:容器端口"，主机端口号可自定义` \
     -e ENABLE_WEB_PANEL=true `# 启用控制面板功能` \
-    --name js `# 设置容器名为jd` \
+    --name js `# 设置容器名为js` \
     --network bridge `# 设置网络为桥接，直连主机` \
-    --hostname js `# 设置主机名为jd` \
+    --hostname js `# 设置主机名为js` \
     --restart always `# 设置容器开机自启` \
     h455257166/mydocker_1.0:latest
+
+#### Windows Docker下进入CMD命令创建容器：
     docker run -dit -p 6789:6789 -v C:/Js/scripts:/js/scripts -v C:/Js/config:/js/config -v C:/Js/log:/js/log -e ENABLE_WEB_PANEL=true --name js --network bridge --hostname js --restart always h455257166/mydocker_1.0:latest
 
 >附：[Docker 容器使用教程](https://www.runoob.com/docker/docker-container-usage.html)
 #### 1. 容器的进入与退出：
 - 进入容器
 
-      docker exec -it jd /bin/bash
+      docker exec -it js /bin/bash
 - 退出容器
 
       exit
 > _ㅤ注意：1. 大部分命令都可在容器外部执行，但部分复杂命令只能在容器内执行，注意区分下面教程的命令执行位置。_\
 > _ㅤㅤㅤㅤ2. 如果您修改了默认的容器名称，当使用下面所有的命令时则需要将 `jd`替换为新的名称。_\
 > _ㅤㅤㅤㅤ3. 下面的命令中如果前面加上了 `docker exec -it jd` 则表示在容器外部运行此命令。_\
-> _ㅤㅤㅤㅤ4. 例如 `docker exec -it newname bash jd.sh xxx now` ，也可使用 `容器ID`代替。_
+> _ㅤㅤㅤㅤ4. 例如 `docker exec -it newname bash js.sh xxx now` ，也可使用 `容器ID`代替。_
 #### 2. 手动运行一键脚本开始您的薅羊毛行为：
 - 进入容器
 
-      docker exec -it jd /bin/bash
+      docker exec -it js /bin/bash
 
 - 执行一键脚本
 
@@ -43,7 +45,7 @@
 
       exit
 #### 3. 一键更新脚本：
-    docker exec -it jd bash git_pull.sh
+    docker exec -it js bash git_pull.sh
 > _注意：每次使用前请执行此命令，确保使用最新的项目脚本和活动脚本，此脚本也配置了定时任务可自动执行。_
 
 > 常见报错：\
@@ -51,9 +53,9 @@
 > 提示 `ssh: connect to host gitee.com port 22: Connection timed out` 是由于您使用平台的 `22` 端口不可用所导致，自行解决处理。\
 > 提示 `Could not resolve hostname gitee.com: Temporary failure in name resolution lost connection` 是由于无法解析到 `Gitee` 服务器地址所导致，表明网络环境异常，自行解决处理。
 #### 4. 执行特定活动脚本：
-    docker exec -it jd bash jd.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
-    docker exec -it jd bash jd.sh xxx now  # 无论是否设置了随机延迟，均立即运行
-> _注意：具体查看活动脚本列表可通过命令 `docker exec -it jd bash jd.sh` 查看， `xxx` 为脚本名。_
+    docker exec -it jd bash js.sh xxx      # 如果设置了随机延迟并且当时时间不在0-2、30-31、59分内，将随机延迟一定秒数
+    docker exec -it jd bash js.sh xxx now  # 无论是否设置了随机延迟，均立即运行
+> _注意：具体查看活动脚本列表可通过命令 `docker exec -it js bash js.sh` 查看， `xxx` 为脚本名。_
 #### 5. 使用 Diy 自定义脚本扩展活动脚本数量：
 - 使用需知
 
@@ -64,16 +66,16 @@
       5. 如果您使用了自制的脚本请更改配置文件里的地址链接
 - 启用该功能
 
-      docker exec -it jd sed -i 's/EnableExtraShell=""/EnableExtraShell="true"/g' config/config.sh
+      docker exec -it js sed -i 's/EnableExtraShell=""/EnableExtraShell="true"/g' config/config.sh
 - 启用自动同步功能（选择）
 
-      docker exec -it jd sed -i 's/EnableExtraShellUpdate=""/EnableExtraShellUpdate="true"/g' config/config.sh
+      docker exec -it js sed -i 's/EnableExtraShellUpdate=""/EnableExtraShellUpdate="true"/g' config/config.sh
 > _ㅤ注意：1. 启用该功能后便可直接下载或同步更新本项目中的 Diy 脚本。_\
 > _ㅤㅤㅤㅤ2. 如果您想更换同步的地址链接自行修改配置文件中的相关变量。_
 
 > ㅤ如果您想推荐某位作者的第三方活动脚本并将它加入到本项目自定义脚本中，您可以在 Issues 专题下方留言。
 #### 6. 查看帮助文档：
-    docker exec -it jd cat course/docker.md
+    docker exec -it js cat course/docker.md
 > _注意：此文档为《使用与更新》教程，即当前页面内容，跟随项目同步更新。_
 
 ***
@@ -81,9 +83,9 @@
 ㅤ
 ## 二、高阶使用教程
 #### 1. 获取互助码：
-    docker exec -it jd bash jd.sh get_share_code now
+    docker exec -it js bash js.sh get_share_code now
 #### 2. 格式化导出互助码：
-    docker exec -it jd bash export_sharecodes.sh
+    docker exec -it js bash export_sharecodes.sh
 > _注意：其原理是从各个活动脚本的日志中获取，只有运行完所有活动脚本后才可使用。_
 #### 3. 配置互助码与相互助力：
 > 填法示例：
@@ -131,17 +133,17 @@
     Telegram 机器人： @LvanLamCommitCodeBot  @TuringLabbot
 > _注意：此公共库由活动脚本作者开发并维护，用于活动间的相互助力以解决助力机会和被助力次数不足的问题，此库定时清空且名额有限，具体提交教程详见回复信息。_
 #### 5. 启动/重启后台运行挂机活动脚本程序：
-    docker exec -it jd bash jd.sh hangup
+    docker exec -it js bash js.sh hangup
 > _注意：当有新的账号添加后必须重启此程序，否则此程序将继续执行之前配置文件中的账号。_
 #### 6. 停止后台运行挂机活动脚本程序：
-    docker exec -it jd pm2 stop jd_crazy_joy_coin
+    docker exec -it js pm2 stop jd_crazy_joy_coin
 #### 7. 导入并使用第三方活动脚本：
     1. 将脚本放置在该项目容器内 scripts 子目录下，也可放在外部的挂载目录（默认为/opt/jd/scripts）
-    2. 然后通过命令 docker exec -it jd bash jd.sh xxx now 运行
+    2. 然后通过命令 docker exec -it js bash js.sh xxx now 运行
     3. 如果您想将第三方脚本加入到 run_all.sh 一键脚本中可将脚本名改为"jd_"开头即可
 > _注意：导入的第三方活动脚本不会随项目本身活动脚本的更新而删除。_
 #### 8. 删除活动运行日志：
-    docker exec -it jd bash rm_log.sh 
+    docker exec -it js bash rm_log.sh 
 > _注意：默认删除 `7天` 以上的日志文件，可以通过配置文件中的相关变量更改默认时间值。_
 
 ***
@@ -149,23 +151,23 @@
 ㅤ
 ## 三、控制面板教程
 #### 1. 手动启用控制面板：
-    docker exec -it jd pm2 start panel/ecosystem.config.js
+    docker exec -it js pm2 start panel/ecosystem.config.js
 > _注意：在某些环境下当系统重启导致控制面板无法访问提示拒绝连接时可用此命令恢复使用。_
 #### 2. 手动关闭控制面板：
-    docker exec -it jd pm2 stop panel/ecosystem.config.js
+    docker exec -it js pm2 stop panel/ecosystem.config.js
 > _注意：`VPS` 平台用户关机前请先执行此命令手动停止控制面板，否则在仪表盘强制关机重启后可能会出现无法保存配置文件的问题。_
 #### 3. 重启控制面板：
-    docker exec -it jd pm2 restart panel/ecosystem.config.js
+    docker exec -it js pm2 restart panel/ecosystem.config.js
 #### 4. 重置控制面板的用户名和密码：
-    docker exec -it jd bash jd.sh resetpwd
+    docker exec -it js bash js.sh resetpwd
 #### 5. 升级控制面板：
-    docker exec -it jd /bin/bash
+    docker exec -it js /bin/bash
     cd panel
     yarn install || yarn install --registry=https://registry.npm.taobao.org
     exit
 > _注意：如果您更改了默认访问端口，那么在执行此命令后需要重新修改。_
 #### 6. 重新安装控制面板：
-    docker exec -it jd /bin/bash
+    docker exec -it js /bin/bash
     cd panel
     yarn install || yarn install --registry=https://registry.npm.taobao.org
     npm install -g pm2
@@ -178,19 +180,19 @@
 ㅤ
 ## 四、更新教程
 #### 1. 更新 `一键更新` 脚本：
-    docker exec -it jd wget https://gitee.com/SuperManito/JD-FreeFuck/raw/source/git_pull.sh -O git_pull.sh
+    docker exec -it js wget https://gitee.com/h455257166/MyDocker/raw/main/js.sh -O git_pull.sh
 #### 2. 更新 `配置文件` ：
 - 备份当前配置文件
 
-      docker exec -it jd mv config/config.sh config/bak/config.sh
+      docker exec -it js mv config/config.sh config/bak/config.sh
 - 替换新版配置文件
 
-      docker exec -it jd cp -f sample/config.sh.sample config/config.sh
+      docker exec -it js cp -f sample/config.sh.sample config/config.sh
 > _ㅤ注意：操作为直接替换配置文件，您也可以通过控制面板对比工具自行修改。_
 #### 3. 修复与升级：
 - 进入容器
 
-      docker exec -it jd /bin/bash
+      docker exec -it js /bin/bash
 - 执行修复与升级脚本
 
       bash <(curl -sSL https://gitee.com/SuperManito/JD-FreeFuck/raw/main/update.sh)
