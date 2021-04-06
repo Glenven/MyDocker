@@ -28,9 +28,9 @@ export WPLM_COOKIE="I=i=7685490&u=8220980&n=h455257166&m=0&t=1592992889.51566999
 
 
 ################################## 抖音极速版 ##################################
-#用回车来分割多账号
+#用回车来分割多账号，账号1(有效期20210406——xxxxxxxx)
 #export DYJSB_COOKIE=""
-export DYJSB_COOKIE="sessionid=efc1a8399d99ee850b5d30933ee6b3e6;install_id=2849582282444564;
+export DYJSB_COOKIE="sessionid=87f3db7b725c3a8110f7bce3b5448b5e;install_id=4380872406996232;
 sessionid=4b9425c993104fec834c6b1b11335fc9;install_id=175570533237790;
 sessionid=d3a58f368f0fcd00530d2cdc5db64eb0;install_id=2955920522611112;
 sessionid=22b31e422be3862329806b74fb119eb6;install_id=433279470564;
