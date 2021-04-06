@@ -284,7 +284,7 @@ function Add_Cron() {
       if [[ ${Cron} == jd_bean_sign ]]; then
         echo "4 0,9 * * * bash ${ShellJd} ${Cron}" >>${ListCron}
       else
-        cat ${ListCronLxk} | grep -E "\/${Cron}\." | perl -pe "s|(^.+)node */scripts/(j[drx]_\w+)\.js.+|\1bash ${ShellJd} \2|" >>${ListCron}
+        cat ${ListCronLxk} | grep -E "\/${Cron}\." | perl -pe "s|(^.+)node */scripts/(j[drxs]_\w+)\.js.+|\1bash ${ShellJd} \2|" >>${ListCron}
       fi
     done
 
@@ -340,7 +340,7 @@ function Run_All() {
   rm -rf ${ShellDir}/run-all.sh
   ## 默认将 "jd、jx、jr、js" 开头的活动脚本加入其中
   rm -rf ${ShellDir}/run_all.sh
-  bash ${ShellDir}/js.sh | grep -io 'j[drx]_[a-z].*' | grep -v 'bean_change' >${ShellDir}/run_all.sh
+  bash ${ShellDir}/js.sh | grep -io 'j[drxs]_[a-z].*' | grep -v 'bean_change' >${ShellDir}/run_all.sh
   sed -i "1i\jd_bean_change.js" ${ShellDir}/run_all.sh ## 置顶京豆变动通知
   sed -i "s#^#bash ${ShellDir}/js.sh &#g" ${ShellDir}/run_all.sh
   sed -i 's#.js# now#g' ${ShellDir}/run_all.sh
