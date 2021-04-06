@@ -123,14 +123,14 @@ function Change_ALL() {
 function Diff_Cron() {
   if [ -f ${ListCron} ]; then
     if [ -n "${JD_DIR}" ]; then
-      grep -E " j[drx]_\w+" ${ListCron} | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | sort -u >${ListTask}
+      grep -E " j[drxs]_\w+" ${ListCron} | perl -pe "s|.+ (j[drxs]_\w+).*|\1|" | sort -u >${ListTask}
     else
-      grep "${ShellDir}/" ${ListCron} | grep -E " j[drx]_\w+" | perl -pe "s|.+ (j[drx]_\w+).*|\1|" | sort -u >${ListTask}
+      grep "${ShellDir}/" ${ListCron} | grep -E " j[drxs]_\w+" | perl -pe "s|.+ (j[drxs]_\w+).*|\1|" | sort -u >${ListTask}
     fi
 
-    cat ${ListCronLxk} | grep -E "j[drx]_\w+\.js" | perl -pe "s|.+(j[drx]_\w+)\.js.+|\1|" | sort -u >${ListJs}
+    cat ${ListCronLxk} | grep -E "j[drxs]_\w+\.js" | perl -pe "s|.+(j[drxs]_\w+)\.js.+|\1|" | sort -u >${ListJs}
     if [[ ${EnableExtraShell} == true ]]; then
-      cat ${FileDiy} | grep -v "#" | grep "my_scripts_list" | grep -io "j[drx]_[a-z]*\w[a-z]*" | sort -u >>${ListJs}
+      cat ${FileDiy} | grep -v "#" | grep "my_scripts_list" | grep -io "j[drxs]_[a-z]*\w[a-z]*" | sort -u >>${ListJs}
     fi
 
     grep -vwf ${ListTask} ${ListJs} >${ListJsAdd}
