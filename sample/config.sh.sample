@@ -27,14 +27,33 @@
 export WPLM_COOKIE="I=i=7685490&u=8220980&n=h455257166&m=0&t=1592992889.51566999.99999999&s=fca57e7ed5b79e9b87c97e68bdc4498a&v=1.1;os=android;uid=8220980;isSimulate=0;requestFromApp=1;isFromRn=1;appversion=459;"
 
 
+################################## 咪咕爱看签到 ##################################
+#用回车来分割多账号
+#export MGAK_COOKIE=""
+export MGAK_COOKIE="mToken=eyJ0aW1lc3RhbXAiOjE2MTc4NDE3NjY5NTIsInJvd1Rva2VuIjoiODY3MjJlNzE3YmMzZDNhYTQ2OGEyZTMxODdiZTE0MDYiLCJ1aWQiOjIzNDY4MjIsIm1vYmlsZSI6IjE4MzU4NTcxMjgzIiwiZXh0ZW5kIjoie1wibW9iaWxlVHlwZVwiOlwiMFwifSIsImRldmljZUlkIjoiYTg5MTAwNjk0ODE2NmI5ZSIsImNsaWVudFZlcnNpb24iOiI0LjkuMiIsImRldmljZU1vZGVsIjoiSE9OT1IiLCJndWVzdCI6ZmFsc2UsInNpZ24iOiI2MDIxZWU1OGE3Y2E5ZDMyNWZjNmQ5ZjE0NzJkYzFlNiJ9"
+
+
 ################################## 抖音极速版 ##################################
-#用回车来分割多账号，账号1(有效期20210406——xxxxxxxx)
+#用回车来分割多账号
 #export DYJSB_COOKIE=""
 export DYJSB_COOKIE="sessionid=87f3db7b725c3a8110f7bce3b5448b5e;install_id=4380872406996232;
 sessionid=4b9425c993104fec834c6b1b11335fc9;install_id=175570533237790;
 sessionid=d3a58f368f0fcd00530d2cdc5db64eb0;install_id=2955920522611112;
 sessionid=22b31e422be3862329806b74fb119eb6;install_id=433279470564;
 sessionid=f5ef84019c67c90f1899529fe5380e72;install_id=3870715158992551"
+
+
+################################## 吾爱破解签到 ##################################
+#用回车来分割多账号
+#export WAPJ_COOKIE=""
+export WAPJ_COOKIE="htVD_2132_saltkey=pzf2nUz3;htVD_2132_auth=b00bcBtm%2BPlkaql%2BeZKVb4ZDMyRPsAuyli5gNcyMcBRWrjIKfE1vVzy7zQPwhwg2OQpFgHixOPmKHA76yG37b1LSEG8;"
+
+
+################################## 包图网签到 ##################################
+#用回车来分割多账号
+#账号1，我 |账号2，丁
+export BAOTU_COOKIE="auth_id=3000203%7C%E3%82%9EYannis%E3%80%81passion%E2%9C%94%7C1619050825%7C005125aa9d061e4ebee7dc92af7661c7;
+auth_id=3000503%7C%E4%B8%81%EF%BD%9E%E4%B8%81%7C1619146262%7C70304ed56b1d77731dc4abb1a305343f;"
 
 
 ## ---------------------------------- 京 东 账 号 设 置 ----------------------------------
