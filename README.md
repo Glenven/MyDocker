@@ -1,8 +1,13 @@
 # 关于 Docker 版本的《使用与更新》教程
-## 修订日期：2021 年 4 月 6 日
+## 修订日期：2021 年 4 月 12 日
 ㅤ
-## 一、基础使用教程
-#### liunx下创建容器：
+# **创建容器**
+## # 在 liunx 下创建容器：
+### 1、安装 Docker
+#### 在线安装 Docker：  `curl -sSL https://get.daocloud.io/docker | sh` 
+##### 查看 Docker 当前版本：`docker version`
+##### 启动 Docker 后台服务： `service docker start`
+###2、下载镜像并安装
     docker run -dit \
     -v /opt/js/scripts:/js/scripts `# 设置活动脚本的主机挂载目录为/opt/js/scripts` \
     -v /opt/js/config:/js/config `# 设置配置文件的主机挂载目录为/opt/js/config` \
@@ -15,38 +20,38 @@
     --restart always `# 设置容器开机自启` \
     h455257166/mydocker_1.0:latest
 
-#### Windows Docker下进入CMD命令创建容器：
+------------
+## # 在 Windows 下创建容器：
+### 1、安装 Docker
+#### Docker Desktop 下载地址：[https://www.docker.com/products/docker-desktop](https://www.docker.com/products/docker-desktop "https://www.docker.com/products/docker-desktop")
+
+####2、 Windows下进入CMD命令创建容器：
     docker run -dit -p 6789:6789 -v C:/Js/scripts:/js/scripts -v C:/Js/config:/js/config -v C:/Js/log:/js/log -e ENABLE_WEB_PANEL=true --name js --network bridge --hostname js --restart always h455257166/mydocker_1.0:latest
 
->附：[Docker 容器使用教程](https://www.runoob.com/docker/docker-container-usage.html)
-#### 1. 容器的进入与退出：
-- 进入容器
+> 提醒：Windows下需在C盘根目录创建“Js”文件夹并在文件夹内分别创建scripts，config，log三个文件夹作为脚本文件、配置文件和日志文件的外部挂载目录
 
-      docker exec -it js /bin/bash
-- 退出容器
+------------
+# **使用说明**
 
-      exit
-> _ㅤ注意：1. 大部分命令都可在容器外部执行，但部分复杂命令只能在容器内执行，注意区分下面教程的命令执行位置。_\
-> _ㅤㅤㅤㅤ2. 如果您修改了默认的容器名称，当使用下面所有的命令时则需要将 `jd`替换为新的名称。_\
-> _ㅤㅤㅤㅤ3. 下面的命令中如果前面加上了 `docker exec -it jd` 则表示在容器外部运行此命令。_\
-> _ㅤㅤㅤㅤ4. 例如 `docker exec -it newname bash js.sh xxx now` ，也可使用 `容器ID`代替。_
-#### 2. 手动运行一键脚本开始您的薅羊毛行为：
-- 进入容器
+####附：[Docker 容器使用教程](https://www.runoob.com/docker/docker-container-usage.html)
+## 1. 该容器的进入与退出：
+- ####进入容器： ` docker exec -it js /bin/bash`
+- ####退出容器： ` exit`
 
-      docker exec -it js /bin/bash
+> ㅤ注意：1. 大部分命令都可在容器外部执行，但部分复杂命令只能在容器内执行，注意区分下面教程的命令执行位置。_\
+ㅤㅤㅤㅤ2. 如果您修改了默认的容器名称，当使用下面所有的命令时则需要将 `jd`替换为新的名称。_\
+ㅤㅤㅤㅤ3. 下面的命令中如果前面加上了 `docker exec -it jd` 则表示在容器外部运行此命令。_\
+ㅤㅤㅤㅤ4. 例如 `docker exec -it newname bash js.sh xxx now` ，也可使用 `容器ID`代替。_
 
-- 执行一键脚本
+## 2. 手动运行所有脚本：
 
-      source run_all.sh 或 . run_all.sh
-> _ㅤ注意：1. 此脚本的作用为执行所有活动脚本，共有高达几十个活动脚本，时间较长且与账号数量成正比。_\
-> _ㅤㅤㅤㅤ2. 除手动运行活动脚本外该项目还会通过定时的方式自动执行活动脚本，可通过日志查看运行记录。_\
-> _ㅤㅤㅤㅤ3. 执行此脚本后无需守在电脑旁，会自动在最后无限制运行挂机活动脚本，直到您手动停止运行为止。_
-- 退出容器
+- ####一键执行所有脚本： ` docker exec -it js bash run_all.sh`
+> ㅤ注意：1. 此脚本的作用为执行所有活动脚本，共有高达几十个活动脚本，时间较长且与账号数量成正比。_\
+ㅤㅤㅤㅤ2. 除手动运行活动脚本外该项目还会通过定时的方式自动执行活动脚本，可通过日志查看运行记录。_\
+ㅤㅤㅤㅤ3. 执行此脚本后无需守在电脑旁，会自动在最后无限制运行挂机活动脚本，直到您手动停止运行为止。_
 
-      exit
-#### 3. 一键更新脚本：
-    docker exec -it js bash git_pull.sh
-> _注意：每次使用前请执行此命令，确保使用最新的项目脚本和活动脚本，此脚本也配置了定时任务可自动执行。_
+- #### 一键更新脚本： ` docker exec -it js bash git_pull.sh`
+> 注意：每次使用前请执行此命令，确保使用最新的项目脚本和活动脚本，此脚本也配置了定时任务可自动执行。_
 
 > 常见报错：\
 > 提示 `Repository more than 5 connections` 是由于 `Gitee` 限制了每秒同时拉取项目的IP不能超过 `5` 个所导致，此报错为正常现象，重新执行更新命令即可。\
