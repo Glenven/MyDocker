@@ -1,5 +1,5 @@
 ## Version: v3.34.2
-## Date: 2021-4-6
+## Date: 2021-4-27
 ## Update Content: 新增 "Telegram 代理的认证参数" 推送通知环境变量(3)
 
 
@@ -37,7 +37,7 @@ export MGAK_COOKIE="mToken=eyJ0aW1lc3RhbXAiOjE2MTc4NDE3NjY5NTIsInJvd1Rva2VuIjoiO
 #用回车来分割多账号
 #export DYJSB_COOKIE=""
 export DYJSB_COOKIE="sessionid=87f3db7b725c3a8110f7bce3b5448b5e;install_id=4380872406996232;
-sessionid=4b9425c993104fec834c6b1b11335fc9;install_id=175570533237790;
+sessionid=43546d2886a592d3a9f1d7bb43f68bc0;install_id=175570533237790;
 sessionid=d3a58f368f0fcd00530d2cdc5db64eb0;install_id=2955920522611112;
 sessionid=22b31e422be3862329806b74fb119eb6;install_id=433279470564;
 sessionid=f5ef84019c67c90f1899529fe5380e72;install_id=3870715158992551"
@@ -51,9 +51,10 @@ export WAPJ_COOKIE="htVD_2132_saltkey=pzf2nUz3;htVD_2132_auth=b00bcBtm%2BPlkaql%
 
 ################################## 包图网签到 ##################################
 #用回车来分割多账号
-#账号1，我 |账号2，丁
-export BAOTU_COOKIE="auth_id=3000203%7C%E3%82%9EYannis%E3%80%81passion%E2%9C%94%7C1619050825%7C005125aa9d061e4ebee7dc92af7661c7;
-auth_id=3000503%7C%E4%B8%81%EF%BD%9E%E4%B8%81%7C1619146262%7C70304ed56b1d77731dc4abb1a305343f;"
+#账号1，我 |账号2，小号
+export BAOTU_COOKIE="auth_id=3000203%7C%E3%82%9EYannis%E3%80%81passion%E2%9C%94%7C1620479579%7Cd2ad643917ff3a9d4d1bd113e83ae952;
+auth_id=30622406%7C-%E5%8F%AA%E5%B1%9E%E4%BA%8E%E6%88%91%7C1620479699%7Ca69e4f64ab34cccc20065f0161cdd0fe"
+
 
 
 ## ---------------------------------- 京 东 账 号 设 置 ----------------------------------
@@ -103,7 +104,7 @@ EnableExtraShell=""
 EnableExtraShellUpdate=""
 
 ## DIY 脚本同步地址链接：（默认使用本人项目中的 DIY 脚本）
-EnableExtraShellURL="https://gitee.com/SuperManito/JD-FreeFuck/raw/main/diy/diy.sh"
+EnableExtraShellURL="https://gitee.com/h455257166/My_Script/raw/JD/diy.sh"
 
 ## 可在下方补充您需要用到的第三方活动脚本环境变量，例如通知变量，具体查看脚本内的注释，格式：export 变量名="变量值"
 ## export

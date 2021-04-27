@@ -38,15 +38,15 @@ function Detect_Cron() {
   fi
 }
 
-## 用户数量UserSum
+## 用户数量UserSum  
 function Count_UserSum() {
-  for ((i = 1; i <= 30; i++)); do
+  for ((i = 1; i <= 50; i++)); do
     Tmp=Cookie$i
     CookieTmp=${!Tmp}
     [[ ${CookieTmp} ]] && UserSum=$i || break
   done
 
-  for ((d = 31; d <= 1000; d++)); do
+  for ((d = 50; d <= 1000; d++)); do
     Del=Cookie$d
     sed -i "/${!Del}/d" ${FileConf} || break
   done
@@ -130,7 +130,7 @@ function Trans_JD_BEAN_SIGN_NOTIFY() {
   esac
 }
 
-## 转换UN_SUBSCRIBES
+## 转换UN_SUBSCRIBES 取关参数，取关商品，取关店铺，遇到此商品不取关(完整的商品信息)，遇到此店铺不取关(完整的店铺名称)
 function Trans_UN_SUBSCRIBES() {
   export UN_SUBSCRIBES="${goodPageSize}\n${shopPageSize}\n${jdUnsubscribeStopGoods}\n${jdUnsubscribeStopShop}"
 }
