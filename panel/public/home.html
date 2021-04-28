@@ -118,9 +118,17 @@
             }
 
             function autoReplace(cookie) {
+                //使用CodeMirror获取编辑器当前的值
                 var value = editor.getValue();
+                //exec() 方法用于检索字符串中的正则表达式的匹配。
+                //如果匹配到了字符串则返回一个数组；如果没有匹配到返回null
+                //var re3=/w{2}/;
+                //var res2=re3.exec("要检索的字符串");
+                // [\s]表示，只要出现空白就匹配
+                // [\S]表示，非空白就匹配
                 var ptPin = /pt_pin=[\S]+;/.exec(cookie)[0];
                 var cookieReg = new RegExp(`pt_key=[\\S]+;${ptPin}`);
+                // test() 方法用于检测一个字符串是否匹配某个模式.如果存在返回true，否则返回false
                 if (cookieReg.test(value)) {
                     var newValue = value.replace(cookieReg, cookie);
                     editor.setValue(newValue);
@@ -130,6 +138,33 @@
                 }
             }
 
+            function autoWrite(cookie) {
+                //使用CodeMirror获取编辑器当前的值
+                var value = editor.getValue();
+                // 判断当前获取的cookie中的ptPin是否存在，如果存在则返回内容"pt_pin=xxx;"，不存在则返回null
+                var ptPin = /pt_pin=[\S]+;/.exec(cookie)[0];
+                var cookieReg = new RegExp(`pt_key=[\\S]+;${ptPin}`);
+                // test() 方法用于检测一个字符串是否匹配某个模式.如果存在返回true，否则返回false
+                if (cookieReg.test(value) === false) {
+                    for (var i = 1; i < 1000; i++) {
+                        var ckNum = new RegExp(`Cookie${i}="pt_key=[\\S]+;"`);
+                        if (ckNum.test(value === false)) {
+                            var autoAdd = 'auto_add_jdck'
+                            // 如果config文件中有 autoAdd 变量的值 则进行自动替换
+                            if (autoAdd.test(value)){
+                                var newCookie = `Cookie${i}="${cookie}" \n${autoAdd}`;
+                                var newValue = value.replace(autoAdd, newCookie);
+                                editor.setValue(newValue);
+                                return true;
+                            } else {
+                                return false;
+                            }
+                        }
+                    }
+                } else {
+                    return false;
+                }
+            }
 
             function checkLogin() {
                 var timeId = setInterval(() => {
@@ -144,6 +179,18 @@
                                 if (autoReplace(userCookie)) {
                                     Swal.fire({
                                         title: "cookie已获取(2s后自动替换)",
+                                        html: '<div class="cookieCon" style="font-size:12px;">' +
+                                            userCookie + '</div>',
+                                        icon: "success",
+                                        showConfirmButton: false,
+                                    });
+
+                                    setTimeout(() => {
+                                        $('#save').trigger('click');
+                                    }, 2000);
+                                } else if (autoWrite(userCookie)) {
+                                  Swal.fire({
+                                        title: "cookie已获取(2s后自动增加)",
                                         html: '<div class="cookieCon" style="font-size:12px;">' +
                                             userCookie + '</div>',
                                         icon: "success",
