@@ -145,10 +145,10 @@
                 var ptPin = /pt_pin=[\S]+;/.exec(cookie)[0];
                 var cookieReg = new RegExp(`pt_key=[\\S]+;${ptPin}`);
                 // test() 方法用于检测一个字符串是否匹配某个模式.如果存在返回true，否则返回false
-                if (cookieReg.test(value) === false) {
+                if (cookieReg.test(value) == false) {
                     for (var i = 1; i < 1000; i++) {
                         var ckNum = new RegExp(`Cookie${i}="pt_key=[\\S]+;"`);
-                        if (ckNum.test(value) === false) {
+                        if (ckNum.test(value) == false) {
                             var autoAdd = "auto_add_jdck";
                             // 如果config文件中有 autoAdd 变量的值 则进行自动替换
                             if (autoAdd.test(value)){
