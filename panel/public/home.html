@@ -149,11 +149,11 @@
                     for (var i = 1; i < 1000; i++) {
                         var ckNum = new RegExp(`Cookie${i}="pt_key=[\\S]+;"`);
                         if (ckNum.test(value) == false) {
-                            var autoAdd = "auto_add_jdck";
+                            // var autoAdd = "auto_add_jdck";
                             // 如果config文件中有 autoAdd 变量的值 则进行自动替换
                             if (autoAdd.test(value)){
-                                var newCookie = `Cookie${i}="${cookie}" \n${autoAdd}`;
-                                var newValue = value.replace(autoAdd, newCookie);
+                                var newCookie = `Cookie${i}="${cookie}" \nauto_add_jdck`;
+                                var newValue = value.replace("auto_add_jdck", newCookie);
                                 editor.setValue(newValue);
                                 return true;
                             } else {
