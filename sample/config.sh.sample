@@ -83,8 +83,7 @@ TempBlockCookie=""
 ## 用回车来分割多账号
 ## 利用抓包工具抓取 auth_id=xxx 字段，登录后点“签到”可以获取到
 ## 账号1，我 |账号2，小号
-#export BAOTU_COOKIE="auth_id=3000203%7C%E3%82%9EYannis%E3%80%81passion%E2%9C%94%7C1620479579%7Cd2ad643917ff3a9d4d1bd113e83ae952;
-auth_id=30622406%7C-%E5%8F%AA%E5%B1%9E%E4%BA%8E%E6%88%91%7C1620479699%7Ca69e4f64ab34cccc20065f0161cdd0fe"
+#export BAOTU_COOKIE="auth_id=3000203%7C%E3%82%9EYannis%E3%80%81passion%E2%9C%94%7C1620479579%7Cd2ad643917ff3a9d4d1bd113e83ae952;&auth_id=30622406%7C-%E5%8F%AA%E5%B1%9E%E4%BA%8E%E6%88%91%7C1620479699%7Ca69e4f64ab34cccc20065f0161cdd0fe"
 
 
 
