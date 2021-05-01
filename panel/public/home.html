@@ -134,6 +134,15 @@
                     editor.setValue(newValue);
                     return true;
                 } else {
+                    for (var i = 1; i < 1000; i++) {
+                        var ckNum = new RegExp(`Cookie${i}="pt_key=[\\S]+;"`);
+                        if (ckNum.test(value) == false) {
+                            // var autoAdd = "auto_add_jdck";
+                            // 如果config文件中有 autoAdd 变量的值 则进行自动替换
+                            if (autoAdd.test(value)){
+                                var newCookie = `Cookie${i}="${cookie}" \nauto_add_jdck`;
+                                var newValue = value.replace("auto_add_jdck", newCookie);
+                                editor.setValue(newValue);
                     return false;
                 }
             }
@@ -188,19 +197,21 @@
                                     setTimeout(() => {
                                         $('#save').trigger('click');
                                     }, 2000);
-                                } else if (autoWrite(userCookie)) {
-                                  Swal.fire({
-                                        title: "cookie已获取(2s后自动增加)",
-                                        html: '<div class="cookieCon" style="font-size:12px;">' +
-                                            userCookie + '</div>',
-                                        icon: "success",
-                                        showConfirmButton: false,
-                                    });
+                                } 
+                                // else if (autoWrite(userCookie)) {
+                                //   Swal.fire({
+                                //         title: "cookie已获取(2s后自动增加)",
+                                //         html: '<div class="cookieCon" style="font-size:12px;">' +
+                                //             userCookie + '</div>',
+                                //         icon: "success",
+                                //         showConfirmButton: false,
+                                //     });
 
-                                    setTimeout(() => {
-                                        $('#save').trigger('click');
-                                    }, 2000);
-                                } else {
+                                //     setTimeout(() => {
+                                //         $('#save').trigger('click');
+                                //     }, 2000);
+                                // } 
+                                else {
                                     Swal.fire({
                                         title: "cookie已获取",
                                         html: '<div class="cookieCon" style="font-size:16px;font-weight: bold;">自动替换失败，请复制Cookie后手动更新。</div>' +
