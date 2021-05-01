@@ -27,7 +27,7 @@
 ## 必须按数字顺序1、2、3、4...依次编号下去，手动添加的书写例子如下，将 CookieX 的 X 替换为数字编号即可
 CookieX=""
 
-auto_add_jdck
+#auto_add_jdck
 
 ## 以上 auto_xxx_jdck 字段用于开启新添加用户自动添加Cookie，删除该字段则需要手动输入获取到的Cookie值
 
