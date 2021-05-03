@@ -11,6 +11,7 @@
 ### 2、下载镜像并安装
 ```
 docker run -dit \
+    -m 1500M  `#限制物理内存使用上限为1500M` \
     -v /opt/js/scripts:/js/scripts `# 设置活动脚本的主机挂载目录为/opt/js/scripts` \
     -v /opt/js/config:/js/config `# 设置配置文件的主机挂载目录为/opt/js/config` \
     -v /opt/js/log:/js/log `# 设置日志的主机挂载目录为/opt/js/log` \
@@ -30,7 +31,7 @@ docker run -dit \
 
 #### 2、 Windows下进入CMD命令创建容器：
 ```
-docker run -dit -p 6789:6789 -v C:/Js/scripts:/js/scripts -v C:/Js/config:/js/config -v C:/Js/log:/js/log -e ENABLE_WEB_PANEL=true --name js --network bridge --hostname js --restart always h455257166/mydocker_1.0:latest
+docker run -dit -p 6789:6789 -m 1500M -v C:/Js/scripts:/js/scripts -v C:/Js/config:/js/config -v C:/Js/log:/js/log -e ENABLE_WEB_PANEL=true --name js --network bridge --hostname js --restart always h455257166/mydocker_1.0:latest
 ```
 
 > 提醒：Windows下需在C盘根目录创建“Js”文件夹并在文件夹内分别创建scripts，config，log三个文件夹作为脚本文件、配置文件和日志文件的外部挂载目录
