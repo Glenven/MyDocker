@@ -134,7 +134,7 @@ function Trans_JD_BEAN_SIGN_NOTIFY() {
 
 ## 转换UN_SUBSCRIBES 取关参数，取关商品，取关店铺，遇到此商品不取关(完整的商品信息)，遇到此店铺不取关(完整的店铺名称)
 function Trans_UN_SUBSCRIBES() {
-  export UN_SUBSCRIBES="${goodPageSize}\n${shopPageSize}\n${jdUnsubscribeStopGoods}\n${jdUnsubscribeStopShop}"
+  export UN_SUBSCRIBES="${goodPageSize}\n${shopPageSize}\n${stopGoods}\n${stopShop}"
 }
 
 ## 申明全部变量
