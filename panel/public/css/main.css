@@ -32,11 +32,12 @@ nav ul li {
 nav ul li a:link,
 nav ul li a:visited,
 nav ul li a:active {
+    border-radius: 15px;
     font-size: 0.875rem;
-    padding: 0.5rem 1.4rem;
+    padding: 0.3rem 1rem;
     color: white;
     text-decoration: none;
-    background-color: #535252;
+    background-color: #000000;
     transition: background-color 200ms;
 }
 
@@ -400,8 +401,9 @@ nav .active a {
 
 /* 按钮配置 */
 button {
+    border-radius: 15px;
     /* 静态背景颜色 */
-    background: #535252;
+    background: #000000;
     /* 静态字体颜色 */
     color: rgb(255, 255, 255);
     border: none;
