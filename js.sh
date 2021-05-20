@@ -11,6 +11,7 @@ ConfigDir=${ShellDir}/config
 FileConf=${ConfigDir}/config.sh
 FileConfSample=${ShellDir}/sample/config.sh.sample
 LogDir=${ShellDir}/log
+FileShare=${ShellDir}/log/export_sharecodes/sharecodes.sh
 ListScripts=($(
   cd ${ScriptsDir}
   ls *.js | grep -E "j[drxs]_"
@@ -31,6 +32,13 @@ function Import_Conf() {
   fi
 }
 
+## 导入互助码sharecodes.sh
+function Import_Share() {
+  if [ -f ${FileShare} ]; then
+    . ${FileShare}
+  fi
+}
+
 ## 更新crontab
 function Detect_Cron() {
   if [[ $(cat ${ListCron}) != $(crontab -l) ]]; then
@@ -38,7 +46,7 @@ function Detect_Cron() {
   fi
 }
 
-## 用户数量UserSum  
+## 京东用户数量UserSum  
 function Count_UserSum() {
   for ((i = 1; i <= 50; i++)); do
     Tmp=Cookie$i
@@ -52,7 +60,7 @@ function Count_UserSum() {
   done
 }
 
-## 组合Cookie和互助码子程序
+## 组合京东Cookie和互助码子程序
 function Combin_Sub() {
   CombinAll=""
   if [[ ${AutoHelpOther} == true ]] && [[ $1 == ForOther* ]]; then
@@ -145,6 +153,7 @@ function Set_Env() {
   Trans_UN_SUBSCRIBES
 }
 
+
 ## 随机延迟
 function Random_Delay() {
   if [[ -n ${RandomDelay} ]] && [[ ${RandomDelay} -gt 0 ]]; then
@@ -208,7 +217,7 @@ function Reset_Pwd() {
 
 ## 运行京东脚本
 function Run_Normal() {
-  Import_Conf $1 && Detect_Cron && Set_Env
+  Import_Conf $1 && Import_Share $1 && Detect_Cron && Set_Env
 
   FileNameTmp1=$(echo $1 | perl -pe "s|\.js||")
   FileNameTmp2=$(echo $1 | perl -pe "{s|jd_||; s|\.js||; s|^|jd_|}")
