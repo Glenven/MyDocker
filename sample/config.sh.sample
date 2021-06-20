@@ -1,6 +1,6 @@
-## Version: v3.37.0
-## Date: 2021-5-27
-## Update Content: 修改，删除京东互助区，请看228行说明
+## Version: v3.38.0
+## Date: 2021-6-20
+## Update Content: 增加账号备注的CookieName字段
 
 
 ## 上面版本号中，如果第2位数字有变化，那么代表增加了新的参数，如果只有第3位数字有变化，仅代表更新了注释，没有增加新的参数，可更新可不更新
@@ -10,7 +10,9 @@
 ################################## 定义Cookie（必填） ##################################
 ## 京东扫码自动添加/替换，避免出现脚本不做任务情况，尽量避免手动输入
 ## 必须按数字顺序1、2、3、4...依次编号下去，手动添加的书写例子如下，将 CookieX 的 X 替换为数字编号即可
+## 在对应的CookieX，在CookieNameX可以写入对应的备注名方便查找，可以忽略不写
 CookieX=""
+CookieNameX=""
 
 #auto_add_jdck
 
@@ -229,7 +231,7 @@ export PUSH_PLUS_USER=""
 
 ## 京喜财富岛提现Token
 ## 有难度，需要抓包，种植京喜农场的水果种子，可以获取到，查找关键词 farm_jstoken
-export JXNCTOKENS='{"farm_jstoken":"8c32286d00fdf69c3a06b16f3f0496e1","timestamp":"1618667895843","phoneid":"ff9d3ffdd98c26a1"}&{"farm_jstoken":"c5ee059e1eae843c5a55a7a4335e7048","timestamp":"1618669245106","phoneid":"9629679dee25a988"}&{"farm_jstoken":"abd81965baa2fe02bcb65b1e774f0511","timestamp":"1618669542980","phoneid":"e16df5a9fe608af"}'
+export JXNCTOKENS=''
 
 ## 重要！互助码说明。
 ## 直接复制log目录中的export_sharecodes中的sharecodes.sh中的内容即可，首日挂脚本没有内容，第二天可见
