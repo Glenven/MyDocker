@@ -97,7 +97,10 @@ function Combin_Sub() {
 
 ## 组合Cookie、Token与互助码
 function Combin_All() {
+  ## 京东cookie
   export JD_COOKIE=$(Combin_Sub Cookie)
+  ## 京东账号备注
+  export JD_COOKIENAME=$(Combin_Sub CookieName)
   ## 东东农场(jd_fruit.js)
   export FRUITSHARECODES=$(Combin_Sub ForOtherFruit)
   ## 东东萌宠(jd_pet.js)
