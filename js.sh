@@ -101,6 +101,8 @@ function Combin_All() {
   export JD_COOKIE=$(Combin_Sub Cookie)
   ## 京东账号备注
   export JD_COOKIENAME=$(Combin_Sub CookieName)
+  ## 京喜财富岛提现token
+  export JXNCTOKENS=$(Combin_Sub JxncToken)
   ## 东东农场(jd_fruit.js)
   export FRUITSHARECODES=$(Combin_Sub ForOtherFruit)
   ## 东东萌宠(jd_pet.js)
