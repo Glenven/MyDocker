@@ -2,7 +2,7 @@ FROM node:lts-alpine
 
 LABEL maintainer="h455257166"
 
-ARG JD_BASE_URL=https://gitee.com/h455257166/MyDocker.git
+ARG JD_BASE_URL=https://hub.fastgit.org/h455257166/MyDocker.git
 
 ARG JD_BASE_BRANCH=main
 
