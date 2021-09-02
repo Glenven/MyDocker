@@ -113,7 +113,7 @@ async function step1() {
         okl_token,
         token = ""
         let timeStamp = (new Date()).getTime()
-        let url = 'https://plogin.m.jd.com/cgi-bin/mm/new_login_entrance?lang=chs&appid=300&returnurl=https://wq.jd.com/passport/LoginRedirect?state=' + timeStamp + '&returnurl=https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action&source=wq_passport'
+        let url = 'https://plogin.m.jd.com/cgi-bin/mm/new_login_entrance?lang=chs&appid=300&returnurl=https://wq.jd.com/passport/LoginRedirect?state=' + timeStamp + '&returnurl=https://home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action&source=wq_passport&risk_jd[eid]=&risk_jd[fp]=89c3965255b5d5cd68a1453d71c22094'
         const response = await got(url, {
             responseType: 'json',
             headers: {
@@ -187,7 +187,7 @@ async function checkLogin() {
             form: {
                 lang: 'chs',
                 appid: 300,
-                returnurl: 'https://wqlogin2.jd.com/passport/LoginRedirect?state=1100399130787&returnurl=//home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action',
+                returnurl: 'https://wqlogin2.jd.com/passport/LoginRedirect?state' + timeStamp + '&returnurl=//home.m.jd.com/myJd/newhome.action?sceneval=2&ufc=&/myJd/home.action',
                 source: 'wq_passport'
             },
             headers: {
