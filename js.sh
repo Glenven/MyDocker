@@ -99,6 +99,8 @@ function Combin_Sub() {
 function Combin_All() {
   ## 京东cookie
   export JD_COOKIE=$(Combin_Sub Cookie)
+  ## 京东cookie_wskey
+  export JD_WSKEY=$(Combin_Sub Wskey)
   ## 京东账号备注
   export JD_COOKIENAME=$(Combin_Sub CookieName)
   ## 京喜财富岛提现token
