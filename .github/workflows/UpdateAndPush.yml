@@ -49,7 +49,7 @@ jobs:
       - name: 开始同步内容到【Gitee】🔄
         uses: Yikun/hub-mirror-action@master
         with:
-          src: github/h455257166
+          src: github/Glenven
           dst: gitee/h455257166
           static_list: "MyDocker"
           dst_key: ${{ secrets.GITEE_PRIVATE_KEY }}
